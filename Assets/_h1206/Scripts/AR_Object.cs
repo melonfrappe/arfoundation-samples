@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ARObject : MonoBehaviour
+public class AR_Object : MonoBehaviour
 {
     public List<Texture> textures;
-    TextureController tc;
+    MainController mc;
 
     public void SetTexture(int index)
     {
         GetComponent<Renderer>().material.mainTexture = textures[index];
+    }
+
+    void Start()
+    {
+        mc = MainController.Instance;
+        mc.OnSpawn(GetComponent<AR_Object>());
     }
 }
