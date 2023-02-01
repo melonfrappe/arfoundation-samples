@@ -108,7 +108,6 @@ GameObject:
   - component: {fileID: 6461988856246099545}
   - component: {fileID: 7926972192948736508}
   - component: {fileID: 5325142054132196662}
-  - component: {fileID: 3329407385433959516}
   - component: {fileID: 1392922486642563902}
   m_Layer: 0
   m_Name: MtFujiDEM+Map
@@ -183,22 +182,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3329407385433959516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5973541173030323427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fa1947d6a52f8b45b42a663589950b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textures:
-  - {fileID: 2800000, guid: b918bc47864e03b4b9cabdbff1988ec5, type: 3}
-  - {fileID: 2800000, guid: ac1bd18651126fd449d32abe8f2eab89, type: 3}
-  - {fileID: 2800000, guid: 96048f597357f9349a4f44c89b50d448, type: 3}
 --- !u!64 &1392922486642563902
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -210,7 +193,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -615717447639480222, guid: ce1a3f52d3c6bc743b46f3ddc6fad282, type: 3}
 --- !u!1 &8245315723674469670
@@ -225,6 +208,7 @@ GameObject:
   - component: {fileID: 2778575868979115198}
   - component: {fileID: 6175485304457710485}
   - component: {fileID: 1902604882084641453}
+  - component: {fileID: 1891321914331238824}
   m_Layer: 0
   m_Name: Mt.Fuji
   m_TagString: Untagged
@@ -291,10 +275,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1891321914331238824}
+        m_TargetAssemblyTypeName: InteractableObject, Assembly-CSharp
+        m_MethodName: OnSelectEntered
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1891321914331238824}
+        m_TargetAssemblyTypeName: InteractableObject, Assembly-CSharp
+        m_MethodName: OnSelectExited
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -414,7 +422,7 @@ MonoBehaviour:
   m_XROrigin: {fileID: 0}
   m_ARSessionOrigin: {fileID: 0}
   m_MinScale: 0.75
-  m_MaxScale: 1.75
+  m_MaxScale: 3
   m_ElasticRatioLimit: 0
   m_Sensitivity: 0.75
   m_Elasticity: 0.15
@@ -502,6 +510,23 @@ MonoBehaviour:
   m_ARSessionOrigin: {fileID: 0}
   m_RotationRateDegreesDrag: 100
   m_RotationRateDegreesTwist: 2.5
+--- !u!114 &1891321914331238824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8245315723674469670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dad4fcc93966a644b4134573f26e90d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 5325142054132196662}
+  textures:
+  - {fileID: 2800000, guid: 96048f597357f9349a4f44c89b50d448, type: 3}
+  - {fileID: 2800000, guid: b918bc47864e03b4b9cabdbff1988ec5, type: 3}
+  - {fileID: 2800000, guid: ac1bd18651126fd449d32abe8f2eab89, type: 3}
 --- !u!1 &8245315724311335825
 GameObject:
   m_ObjectHideFlags: 0

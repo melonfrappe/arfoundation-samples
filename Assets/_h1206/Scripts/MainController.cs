@@ -4,33 +4,49 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class MainController : Singleton<MainController>
 {
-    public Transform buttonParent;
+    public Transform buttonAnchors;
+    public GameObject buttonParentPrefab;
     public GameObject buttonPrefab;
+    public Button resetButton;
     public TextMeshProUGUI debugger;
 
     [HideInInspector]
-    public GameObject currentObject;
+    public List<InteractableObject> objects;
+
+    [HideInInspector]
+    public List<Transform> anchors;
+
+    int currentIndex = -1;
+    void Start()
+    {
+        resetButton.onClick.AddListener(()=> {
+            objects[currentIndex].Reset();
+        });
+    }
+
+    void Update()
+    {
+        
+    }
 
     public void SetDebuggingText(string text)
     {
         debugger.SetText(text);
     }
 
-    public void OnSpawn(AR_Object ar_object)
+    public void SetFocusedObject(InteractableObject target)
     {
-        currentObject = ar_object.gameObject;
+        if (currentIndex == objects.IndexOf(target))
+            return;
 
-        for (int i = 0; i < ar_object.textures.Count; i++)
-        {
-            GameObject cloneButton = Instantiate(buttonPrefab, buttonParent);
-            cloneButton.GetComponentInChildren<TextMeshProUGUI>().SetText(ar_object.textures[i].name);
-            cloneButton.GetComponent<Button>().onClick.AddListener(() =>
-            {
-                ar_object.SetTexture(cloneButton.transform.GetSiblingIndex());
-            });
-        }
+        currentIndex = objects.IndexOf(target);
+
+        anchors.ForEach((a) => {
+            a.gameObject.SetActive(false);
+        });
+
+        anchors[currentIndex].gameObject.SetActive(true);
     }
 }
